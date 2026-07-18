@@ -9,7 +9,7 @@ app.use(express.json());
 const PORT = process.env.PORT || 3000;
 
 // Catch-all endpoint acts as the SPA for the Omnipresence Engine
-app.get('*', (req, res) => {
+app.use((req, res) => {
   // Pass through /api routes
   if (req.path.startsWith('/api/')) return res.status(404).json({ error: 'Not found' });
 
